@@ -6,7 +6,7 @@ loadApiBtn.addEventListener("click", async () => {
 statusMessage.textContent = "Loading expenses from API...";
 expenseList.innerHTML = "";
 try {
-const response = await fetch("https://expensetracker-1-i25j.onrender.com/expenses");
+const response = await fetch("http://127.0.0.1:8000/expenses");
 if (!response.ok) {
 throw new Error("HTTP error: " + response.status);
 }
@@ -19,7 +19,10 @@ statusMessage.textContent = "Failed to fetch data.";
 expenseList.innerHTML = "<p style='color:red;'>Error loading expenses.</p>";
 }
 });
+});
+
 function renderExpenses(data) {
+const expenseList = document.getElementById("expenseList");
 expenseList.innerHTML = "";
 if (!data || data.length === 0) {
 expenseList.innerHTML = "<p>No expenses found.</p>";
@@ -37,4 +40,51 @@ card.innerHTML = `
 expenseList.appendChild(card);
 });
 }
+
+// Function to add expense via API
+async function addExpenseToAPI(expenseData) {
+try {
+const response = await fetch(`http://127.0.0.1:8000/expenses?title=${encodeURIComponent(expenseData.title)}&amount=${expenseData.amount}&category=${encodeURIComponent(expenseData.category)}`, {
+method: "POST"
 });
+
+if (!response.ok) {
+throw new Error("HTTP error: " + response.status);
+}
+
+return await response.json();
+} catch (error) {
+throw error;
+}
+}
+
+// Function to get expenses from API
+async function getExpensesFromAPI() {
+const response = await fetch("http://127.0.0.1:8000/expenses");
+if (!response.ok) {
+throw new Error("HTTP error: " + response.status);
+}
+return await response.json();
+}
+
+// Function to remove expense via API
+async function removeExpenseFromAPI(expenseId, expenseTitle) {
+try {
+const response = await fetch(`http://127.0.0.1:8000/expenses/${expenseId}`, {
+method: "DELETE"
+});
+
+if (!response.ok) {
+throw new Error("HTTP error: " + response.status);
+}
+
+return await response.json();
+} catch (error) {
+throw error;
+}
+}
+
+// Make functions globally available
+window.addExpenseToAPI = addExpenseToAPI;
+window.getExpensesFromAPI = getExpensesFromAPI;
+window.removeExpenseFromAPI = removeExpenseFromAPI;
