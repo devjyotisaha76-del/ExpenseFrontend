@@ -19,16 +19,16 @@ const cancelRemoveBtn = document.getElementById("cancelRemoveBtn");
 const addExpenseForm = document.getElementById("addExpenseForm");
 const removeExpenseForm = document.getElementById("removeExpenseForm");
 const expenses = [
-{ category: "Food", title: "Zakaria Street", amount: 3000, date: "2026-03-23" },
-{ category: "Electronics", title: "Phone", amount: 20000, date: "2026-03-23" },
-{ category: "Entertainment", title: "Movie Tickets", amount: 500, date: "2026-03-23" },
-{ category: "Transportation", title: "Gas", amount: 1000, date: "2026-03-23" },
-{ category: "Utilities", title: "Electricity Bill", amount: 1500, date: "2026-03-23" },
-{ category: "Health", title: "Doctor Visit", amount: 2500, date: "2026-03-23" },
-{ category: "Education", title: "Books", amount: 1200, date: "2026-03-23" },
-{ category: "Clothing", title: "New Shirt", amount: 800, date: "2026-03-23" },
-{ category: "Travel", title: "Weekend Trip", amount: 5000, date: "2026-03-23" },
-{ category: "Miscellaneous", title: "Gift for Friend", amount: 700, date: "2026-03-23" }
+{ id: 1, category: "Food", title: "Zakaria Street", amount: 3000, date: "2026-03-23" },
+{ id: 2, category: "Electronics", title: "Phone", amount: 20000, date: "2026-03-23" },
+{ id: 3, category: "Entertainment", title: "Movie Tickets", amount: 500, date: "2026-03-23" },
+{ id: 4, category: "Transportation", title: "Gas", amount: 1000, date: "2026-03-23" },
+{ id: 5, category: "Utilities", title: "Electricity Bill", amount: 1500, date: "2026-03-23" },
+{ id: 6, category: "Health", title: "Doctor Visit", amount: 2500, date: "2026-03-23" },
+{ id: 7, category: "Education", title: "Books", amount: 1200, date: "2026-03-23" },
+{ id: 8, category: "Clothing", title: "New Shirt", amount: 800, date: "2026-03-23" },
+{ id: 9, category: "Travel", title: "Weekend Trip", amount: 5000, date: "2026-03-23" },
+{ id: 10, category: "Miscellaneous", title: "Gift for Friend", amount: 700, date: "2026-03-23" }
 ];
 loadHardcodedBtn.addEventListener("click", () => {
 statusMessage.textContent = "Loaded sample data successfully.";
@@ -174,11 +174,13 @@ function renderExpenses(data) {
   data.forEach((exp) => {
     const card = document.createElement("div");
     card.className = "expense-card";
+    card.style.position = "relative";
     card.innerHTML = `
       <div class="expense-title">${exp.title}</div>
       <div class="expense-category">${exp.category}</div>
       <div class="expense-amount">₹ ${exp.amount}</div>
       <div class="expense-date">${exp.date}</div>
+      <div style="position: absolute; bottom: 5px; right: 5px; font-size: 12px; color: #666;">ID: ${exp.id || 'N/A'}</div>
     `;
     expenseList.appendChild(card);
   });
