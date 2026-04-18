@@ -30,6 +30,7 @@ const expenses = [
 { id: 9, category: "Travel", title: "Weekend Trip", amount: 5000, date: "2026-03-23" },
 { id: 10, category: "Miscellaneous", title: "Gift for Friend", amount: 700, date: "2026-03-23" }
 ];
+
 loadHardcodedBtn.addEventListener("click", () => {
 statusMessage.textContent = "Loaded sample data successfully.";
 window.currentExpenses = expenses;

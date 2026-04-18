@@ -61,7 +61,61 @@ throw error;
 }
 }
 
+// Function to register a user via API
+async function registerUserToAPI(authData) {
+try {
+const response = await fetch("http://127.0.0.1:8000/users/register", {
+method: "POST",
+headers: {
+"Content-Type": "application/json"
+},
+body: JSON.stringify({
+username: authData.username,
+password: authData.password
+})
+});
+
+const result = await response.json();
+
+if (!response.ok) {
+throw new Error(result.detail || result.message || ("HTTP error: " + response.status));
+}
+
+return result;
+} catch (error) {
+throw error;
+}
+}
+
+// Function to login a user via API
+async function loginUserToAPI(authData) {
+try {
+const response = await fetch("http://127.0.0.1:8000/users/login", {
+method: "POST",
+headers: {
+"Content-Type": "application/json"
+},
+body: JSON.stringify({
+username: authData.username,
+password: authData.password
+})
+});
+
+const result = await response.json();
+
+if (!response.ok) {
+throw new Error(result.detail || result.message || ("HTTP error: " + response.status));
+}
+
+return result;
+} catch (error) {
+throw error;
+}
+}
+
 // Make functions globally available
 window.addExpenseToAPI = addExpenseToAPI;
 window.getExpensesFromAPI = getExpensesFromAPI;
 window.removeExpenseFromAPI = removeExpenseFromAPI;
+window.registerUserToAPI = registerUserToAPI;
+window.loginUserToAPI = loginUserToAPI;

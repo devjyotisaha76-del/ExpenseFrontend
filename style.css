@@ -14,6 +14,8 @@
   --primary-gradient: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
   --secondary-gradient: linear-gradient(135deg, #10b981 0%, #059669 100%);
   --danger-gradient: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+  --auth-login-gradient: linear-gradient(135deg, #0f766e 0%, #115e59 100%);
+  --auth-register-gradient: linear-gradient(135deg, #d97706 0%, #b45309 100%);
   --primary: #2563eb;
   --primary-dark: #1d4ed8;
   --secondary: #10b981;
@@ -121,6 +123,36 @@ body {
   letter-spacing: 0.8px;
   text-shadow: 0 4px 15px rgba(0, 0, 0, 0.25);
   animation: slideUp 0.8s ease-in-out 0.15s both;
+}
+
+.auth-actions {
+  margin-top: 26px;
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.auth-login {
+  background: var(--auth-login-gradient);
+  color: white;
+  box-shadow: var(--shadow-md);
+}
+
+.auth-login:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 40px rgba(15, 118, 110, 0.35);
+}
+
+.auth-register {
+  background: var(--auth-register-gradient);
+  color: white;
+  box-shadow: var(--shadow-md);
+}
+
+.auth-register:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 15px 40px rgba(217, 119, 6, 0.35);
 }
 
 /* ============================================
@@ -395,6 +427,14 @@ body {
   border: 1px solid rgba(255, 255, 255, 0.8);
 }
 
+.auth-modal-content {
+  max-width: 460px;
+}
+
+.auth-form .form-actions {
+  margin-top: 8px;
+}
+
 @keyframes modalSlideIn {
   from {
     transform: translateY(-60px) scale(0.93);
@@ -601,6 +641,10 @@ body {
     gap: 10px;
   }
 
+  .auth-actions {
+    margin-top: 20px;
+  }
+
   .btn {
     padding: 11px 20px;
     font-size: 13px;
@@ -646,6 +690,13 @@ body {
   .controls {
     flex-direction: column;
     gap: 10px;
+  }
+
+  .auth-actions {
+    flex-direction: column;
+    width: 100%;
+    max-width: 260px;
+    margin-inline: auto;
   }
 
   .btn {
