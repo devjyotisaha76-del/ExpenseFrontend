@@ -1,4 +1,4 @@
-const BASE_URL = "https://expensetracker-tevg.onrender.com";
+const BASE_URL = "https://expensetracker-1-i25j.onrender.com";
 
 document.addEventListener("DOMContentLoaded", () => {
     const loadApiBtn = document.getElementById("loadApiBtn");
