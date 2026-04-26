@@ -56,7 +56,7 @@ registerModal.classList.remove("hidden");
 });
 
 continueToDashboardBtn.addEventListener("click", () => {
-window.location.href = "index.html";
+window.location.href = "UI.html";
 });
 
 closeLoginModalBtn.addEventListener("click", () => {
